@@ -1,14 +1,17 @@
 import { Image } from 'expo-image';
 import { StyleSheet } from 'react-native';
 
+import ChecklistCard from '@/components/checklist-card';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
-import RoutineWidget from '@/components/routine-widget';
+import RoutineCard from '@/components/routine-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { useState } from 'react';
 
 export default function Home() {
-  var routines = true;
-  
+  const [isRoutinesVisible, setIsRoutinesVisible] = useState(true);
+
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -19,13 +22,24 @@ export default function Home() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-
-        <ThemedText type="title">routines</ThemedText>
+        <ThemedText type="title" onPress={() => setIsRoutinesVisible(!isRoutinesVisible)}>routines</ThemedText>
       </ThemedView>
-      <RoutineWidget />
-      <RoutineWidget />
-      <RoutineWidget />
-      <RoutineWidget />
+      {isRoutinesVisible && (
+        <>
+          <RoutineCard />
+          <RoutineCard /> 
+          <RoutineCard />
+          <RoutineCard />
+        </>
+      )}
+      {!isRoutinesVisible && (
+        <>
+          <ChecklistCard />
+          <ChecklistCard /> 
+          <ChecklistCard />
+          <ChecklistCard />
+        </>
+      )}
       {/* <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
