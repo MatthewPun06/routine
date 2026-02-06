@@ -1,11 +1,11 @@
 import { Image } from 'expo-image';
 import { StyleSheet } from 'react-native';
 
-import ChecklistCard from '@/components/checklist-card';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import RoutineCard from '@/components/routine-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import ChecklistCard from '@/components/checklist-card';
 import { useState } from 'react';
 
 export default function Home() {
